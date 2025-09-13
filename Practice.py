@@ -130,19 +130,17 @@ print(num1)
 # print(f"There are {even_amt} even numbers and {odd_amt} odd numbers")
 # print(f"Even Numbers: {even_list}\nOdd Numbers: {odd_list}")
 
-row_amt = int(input())
+# row_amt = int(input())
+# def triangle(shift):
+#     for row in range(1, row_amt + 1):
+#         spaces = " " * (row_amt - row + shift)
+#         numbers = "*" * (2 * row - 1)
+#         spaces_2 = (" " * (shift + row_amt - row)) + (" " * ((row_amt - row)))
+#         print(f"{spaces}{numbers}{spaces_2}{numbers}")
 
 
-def triangle(shift):
-    for row in range(1, row_amt + 1):
-        spaces = " " * (row_amt - row + shift)
-        numbers = "*" * (2 * row - 1)
-        spaces_2 = (" " * (shift + row_amt - row)) + (" " * ((row_amt - row)))
-        print(f"{spaces}{numbers}{spaces_2}{numbers}")
-
-
-triangle(5)
-triangle(10)
-triangle(15)
-triangle(20)
-triangle(25)
+# triangle(5)
+# triangle(10)
+# triangle(15)
+# triangle(20)
+# triangle(25)
