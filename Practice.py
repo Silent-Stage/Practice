@@ -44,7 +44,7 @@ print("10", character.replace("m", "j"))
 print("11", "mj" in character)
 # not in is the reverse value of in
 print("12", "jo" not in character)
-# 1 / is normal divisio, // rounds the number down
+# 1 / is normal division, // rounds the number down
 print(10/3)
 print(10//3)
 # 2 * is to the power of
@@ -144,3 +144,4 @@ print(num1)
 # triangle(15)
 # triangle(20)
 # triangle(25)
+
