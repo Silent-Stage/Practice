@@ -142,3 +142,6 @@ print(num1)
 # triangle(15)
 # triangle(20)
 # triangle(25)
+print("Hello World")
+
+print("Hello, you")
