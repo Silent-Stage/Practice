@@ -209,9 +209,8 @@ while True:
     elif choice == 5:
         rand = random.choice(tasks)
         print("\n", rand, "\n")
-        input("\nDo it brochacho\n")
     elif choice == 6:
-        print("\n\nSee ya brotein\n")
+        print("\nSee ya brotein\n")
         break
     else:
         print("\n\nPick 1-6 brotato\n")
