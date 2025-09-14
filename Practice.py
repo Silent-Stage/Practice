@@ -1,4 +1,5 @@
 # Enter python practice.py into the terminal to see the output of the code
+import random
 import os
 import json
 character = "Joseph"
@@ -143,7 +144,6 @@ print(num1)
 
 # The file where tasks will be saved
 FILENAME = "Task Project.json"
-
 # Load tasks from file if it exists
 if os.path.exists(FILENAME):
     with open(FILENAME, "r") as f:
@@ -151,18 +151,26 @@ if os.path.exists(FILENAME):
 else:
     tasks = []
 # this function adds the changes made by the user to the JSON file to save it
+
+
 def add_memory(tasks):
     with open(FILENAME, "w") as f:
         json.dump(tasks, f, indent=4)
 # this function prints the list of tasks
+
+
 def see_list(plc):
     for i, task1 in enumerate(plc, start=1):
         print(f"\nTask {i}:\n{task1}\n")
 # this function removes the task of the index the user input
+
+
 def rem_task(plc):
     rem = int(input("Remove task: "))
     del plc[int(rem) - 1]
 # this function adds -DONE to the task of the users choosing, if input is outside of the index of the list, it tells the user, if it returns a ValueError, it tells the user to try again
+
+
 def done_task(plc):
     while True:
         try:
@@ -174,13 +182,15 @@ def done_task(plc):
                 print("Task number out of range")
         except ValueError:
             print("Enter a number bronado")
+
+
 # while True: continually prints the menu
 while True:
-    print("MENU:\n1. Add task\n2. View tasks\n3. Mark task as done\n4. Delete task\n5. Exit")
+    print("\n\nMENU:\n1. Add task\n2. View tasks\n3. Mark task as done\n4. Delete task\n5. Random task\n6. Exit")
     try:
         choice = int(input())
     except ValueError:
-        print("\n\nPick 1-5 brotato\n")
+        print("\n\nPick 1-6 brotato\n")
         continue
     if choice == 1:
         task = input("Add task: ")
@@ -197,7 +207,11 @@ while True:
         rem_task(tasks)
         add_memory(tasks)
     elif choice == 5:
+        rand = random.choice(tasks)
+        print("\n", rand, "\n")
+        input("\nDo it brochacho\n")
+    elif choice == 6:
         print("\n\nSee ya brotein\n")
         break
     else:
-        print("\n\nPick 1-5 brotato\n")
+        print("\n\nPick 1-6 brotato\n")
