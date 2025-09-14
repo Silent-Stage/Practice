@@ -1,14 +1,7 @@
 # Enter python practice.py into the terminal to see the output of the code
-character = 'Joseph Richmond'
-user = 'Gangster'
-print(character + ' loves ' + user)
-
-spooky = 'I see you I hate you'
-for creepy in spooky:
-    print(creepy)
-
-print("Fawk you mean")
-
+import os
+import json
+character = "Joseph"
 age = 12
 myage = 15
 if age > myage:
@@ -18,7 +11,7 @@ else:
 # elements is each letter in a string or the entire number assigned to a variable
 # len() returns the amount of elements in a variable
 print("1", len(character))
-# brackets with a number returns the letter and maybe number in the index of your choosing
+# brackets with a number returns the element in the index of your choosing
 print("2", character[1])
 # brackets with a colon return any part of a variable, depending on the amount and which index you use
 print("3", character[0:3])
@@ -145,3 +138,44 @@ print(num1)
 # triangle(20)
 # triangle(25)
 
+
+# The file where tasks will be saved
+FILENAME = "Task Project.json"
+
+# Load tasks from file if it exists
+if os.path.exists(FILENAME):
+    with open(FILENAME, "r") as f:
+        tasks = json.load(f)
+else:
+    tasks = []
+
+
+print("1. Add task\n2. View tasks\n3. Mark task as done\n4. Delete task\n5. Exit")
+choice = int(input())
+if choice == 1:
+    task = input("Add task: ")
+    tasks.append(task)
+    with open(FILENAME, "w") as f:
+        json.dump(tasks, f, indent=4)
+elif choice == 2:
+    dec = len(tasks)
+    for i in range(0, dec):
+        print("\nTask " + str(i+1) + ":"), print(tasks[i] + "\n")
+elif choice == 3:
+    dec = len(tasks)
+    for i in range(0, dec):
+        print("\nTask " + str(i+1) + ":"), print(tasks[i] + "\n")
+    done_task = input("Completed task: ")
+    tasks[int(done_task) - 1] = tasks[int(done_task) - 1] + " -DONE"
+    with open(FILENAME, "w") as f:
+        json.dump(tasks, f, indent=4)
+elif choice == 4:
+    dec = len(tasks)
+    for i in range(0, dec):
+        print("\nTask " + str(i+1) + ":"), print(tasks[i] + "\n")
+    rem_task = input("Remove task: ")
+    del tasks[int(rem_task) - 1]
+    with open(FILENAME, "w") as f:
+        json.dump(tasks, f, indent=4)
+elif choice == 5:
+    print("See ya brotein")
