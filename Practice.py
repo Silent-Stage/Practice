@@ -37,6 +37,8 @@ print("10", character.replace("m", "j"))
 print("11", "mj" in character)
 # not in is the reverse value of in
 print("12", "jo" not in character)
+# .index() finds the index of an element inside of a list or string
+print("13", character.index("p"))
 # 1 / is normal division, // rounds the number down
 print(10/3)
 print(10//3)
@@ -148,34 +150,54 @@ if os.path.exists(FILENAME):
         tasks = json.load(f)
 else:
     tasks = []
-
-
-print("1. Add task\n2. View tasks\n3. Mark task as done\n4. Delete task\n5. Exit")
-choice = int(input())
-if choice == 1:
-    task = input("Add task: ")
-    tasks.append(task)
+# this function adds the changes made by the user to the JSON file to save it
+def add_memory(tasks):
     with open(FILENAME, "w") as f:
         json.dump(tasks, f, indent=4)
-elif choice == 2:
-    dec = len(tasks)
-    for i in range(0, dec):
-        print("\nTask " + str(i+1) + ":"), print(tasks[i] + "\n")
-elif choice == 3:
-    dec = len(tasks)
-    for i in range(0, dec):
-        print("\nTask " + str(i+1) + ":"), print(tasks[i] + "\n")
-    done_task = input("Completed task: ")
-    tasks[int(done_task) - 1] = tasks[int(done_task) - 1] + " -DONE"
-    with open(FILENAME, "w") as f:
-        json.dump(tasks, f, indent=4)
-elif choice == 4:
-    dec = len(tasks)
-    for i in range(0, dec):
-        print("\nTask " + str(i+1) + ":"), print(tasks[i] + "\n")
-    rem_task = input("Remove task: ")
-    del tasks[int(rem_task) - 1]
-    with open(FILENAME, "w") as f:
-        json.dump(tasks, f, indent=4)
-elif choice == 5:
-    print("See ya brotein")
+# this function prints the list of tasks
+def see_list(plc):
+    for i, task1 in enumerate(plc, start=1):
+        print(f"\nTask {i}:\n{task1}\n")
+# this function removes the task of the index the user input
+def rem_task(plc):
+    rem = int(input("Remove task: "))
+    del plc[int(rem) - 1]
+# this function adds -DONE to the task of the users choosing, if input is outside of the index of the list, it tells the user, if it returns a ValueError, it tells the user to try again
+def done_task(plc):
+    while True:
+        try:
+            don = int(input("Completed task: "))
+            if 1 <= don <= len(plc):
+                plc[don - 1] += " -DONE"
+                break
+            else:
+                print("Task number out of range")
+        except ValueError:
+            print("Enter a number bronado")
+# while True: continually prints the menu
+while True:
+    print("MENU:\n1. Add task\n2. View tasks\n3. Mark task as done\n4. Delete task\n5. Exit")
+    try:
+        choice = int(input())
+    except ValueError:
+        print("\n\nPick 1-5 brotato\n")
+        continue
+    if choice == 1:
+        task = input("Add task: ")
+        tasks.append(task)
+        add_memory(tasks)
+    elif choice == 2:
+        see_list(tasks)
+    elif choice == 3:
+        see_list(tasks)
+        done_task(tasks)
+        add_memory(tasks)
+    elif choice == 4:
+        see_list(tasks)
+        rem_task(tasks)
+        add_memory(tasks)
+    elif choice == 5:
+        print("\n\nSee ya brotein\n")
+        break
+    else:
+        print("\n\nPick 1-5 brotato\n")
