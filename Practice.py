@@ -184,35 +184,46 @@ def done_task(plc):
             print("Enter a number bronado")
 
 
-# while True: continually prints the menu
-while True:
+def seemenu():
+    men = input("See Menu?  y/n\n").lower()
+    if men in ("y", "yes"):
+        tasklist()
+    elif men in ("n", "no"):
+        print("\nAight see ya bronado\n")
+
+
+def tasklist():
     print("\n\nMENU:\n1. Add task\n2. View tasks\n3. Mark task as done\n4. Delete task\n5. Random task\n6. Exit")
     try:
         choice = int(input())
     except ValueError:
         print("\n\nPick 1-6 brotato\n")
-        continue
     if choice == 1:
         task = input("Add task: ")
         tasks.append(task)
         add_memory(tasks)
+        seemenu()
     elif choice == 2:
         see_list(tasks)
+        seemenu()
     elif choice == 3:
         see_list(tasks)
         done_task(tasks)
         add_memory(tasks)
+        seemenu()
     elif choice == 4:
         see_list(tasks)
         rem_task(tasks)
         add_memory(tasks)
+        seemenu()
     elif choice == 5:
         rand = random.choice(tasks)
-        print("\n", rand, "\n")
+        print("\nTo do:", rand, "\n")
+        seemenu()
     elif choice == 6:
         print("\nSee ya brotein\n")
-        break
     else:
-        print("\n\nPick 1-6 brotato\n")
+        print("\n\nPick 1-10 brotato\n")
 
-        test12 = 14
+
+tasklist()
