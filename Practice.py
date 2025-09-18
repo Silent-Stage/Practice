@@ -142,88 +142,118 @@ print(num1)
 # triangle(25)
 
 
-# The file where tasks will be saved
-FILENAME = "Task Project.json"
-# Load tasks from file if it exists
-if os.path.exists(FILENAME):
-    with open(FILENAME, "r") as f:
-        tasks = json.load(f)
-else:
-    tasks = []
-# this function adds the changes made by the user to the JSON file to save it
+# # The file where tasks will be saved
+# FILENAME = "Task Project.json"
+# # Load tasks from file if it exists
+# if os.path.exists(FILENAME):
+#     with open(FILENAME, "r") as f:
+#         tasks = json.load(f)
+# else:
+#     tasks = []
+# # this function adds the changes made by the user to the JSON file to save it
 
 
-def add_memory(tasks):
-    with open(FILENAME, "w") as f:
-        json.dump(tasks, f, indent=4)
-# this function prints the list of tasks
+# def add_memory(tasks):
+#     with open(FILENAME, "w") as f:
+#         json.dump(tasks, f, indent=4)
+# # this function prints the list of tasks
 
 
-def see_list(plc):
-    for i, task1 in enumerate(plc, start=1):
-        print(f"\nTask {i}:\n{task1}\n")
-# this function removes the task of the index the user input
+# def see_list(plc):
+#     for i, task1 in enumerate(plc, start=1):
+#         print(f"\nTask {i}:\n{task1}\n")
+# # this function removes the task of the index the user input
 
 
-def rem_task(plc):
-    rem = int(input("Remove task: "))
-    del plc[int(rem) - 1]
-# this function adds -DONE to the task of the users choosing, if input is outside of the index of the list, it tells the user, if it returns a ValueError, it tells the user to try again
+# def rem_task(plc):
+#     rem = int(input("Remove task: "))
+#     del plc[int(rem) - 1]
+# # this function adds -DONE to the task of the users choosing, if input is outside of the index of the list, it tells the user, if it returns a ValueError, it tells the user to try again
 
 
-def done_task(plc):
-    while True:
-        try:
-            don = int(input("Completed task: "))
-            if 1 <= don <= len(plc):
-                plc[don - 1] += " -DONE"
-                break
-            else:
-                print("Task number out of range")
-        except ValueError:
-            print("Enter a number bronado")
+# def done_task(plc):
+#     while True:
+#         try:
+#             don = int(input("Completed task: "))
+#             if 1 <= don <= len(plc):
+#                 plc[don - 1] += " -DONE"
+#                 break
+#             else:
+#                 print("Task number out of range")
+#         except ValueError:
+#             print("Enter a number bronado")
 
 
-def seemenu():
-    men = input("See Menu?  y/n\n").lower()
-    if men in ("y", "yes"):
-        tasklist()
-    elif men in ("n", "no"):
-        print("\nAight see ya bronado\n")
+# def seemenu():
+#     men = input("See Menu?  y/n\n").lower()
+#     if men in ("y", "yes"):
+#         tasklist()
+#     elif men in ("n", "no"):
+#         print("\nAight see ya bronado\n")
 
 
-def tasklist():
-    print("\n\nMENU:\n1. Add task\n2. View tasks\n3. Mark task as done\n4. Delete task\n5. Random task\n6. Exit")
-    try:
-        choice = int(input())
-    except ValueError:
-        print("\n\nPick 1-6 brotato\n")
-    if choice == 1:
-        task = input("Add task: ")
-        tasks.append(task)
-        add_memory(tasks)
-        seemenu()
-    elif choice == 2:
-        see_list(tasks)
-        seemenu()
-    elif choice == 3:
-        see_list(tasks)
-        done_task(tasks)
-        add_memory(tasks)
-        seemenu()
-    elif choice == 4:
-        see_list(tasks)
-        rem_task(tasks)
-        add_memory(tasks)
-        seemenu()
-    elif choice == 5:
-        rand = random.choice(tasks)
-        print("\nTo do:", rand, "\n")
-        seemenu()
-    elif choice == 6:
-        print("\nSee ya brotein\n")
-    else:
-        print("\n\nPick 1-10 brotato\n")
+# def tasklist():
+#     print("\n\nMENU:\n1. Add task\n2. View tasks\n3. Mark task as done\n4. Delete task\n5. Random task\n6. Exit")
+#     try:
+#         choice = int(input())
+#     except ValueError:
+#         print("\n\nPick 1-6 brotato\n")
+#     if choice == 1:
+#         task = input("Add task: ")
+#         tasks.append(task)
+#         add_memory(tasks)
+#         seemenu()
+#     elif choice == 2:
+#         see_list(tasks)
+#         seemenu()
+#     elif choice == 3:
+#         see_list(tasks)
+#         done_task(tasks)
+#         add_memory(tasks)
+#         seemenu()
+#     elif choice == 4:
+#         see_list(tasks)
+#         rem_task(tasks)
+#         add_memory(tasks)
+#         seemenu()
+#     elif choice == 5:
+#         rand = random.choice(tasks)
+#         print("\nTo do:", rand, "\n")
+#         seemenu()
+#     elif choice == 6:
+#         print("\nSee ya brotein\n")
+#     else:
+#         print("\n\nPick 1-10 brotato\n")
 
 
-tasklist()
+# tasklist()
+
+class Killerstats:
+    def __init__(self, name, power, speed, terrorradius, height):
+        self.name = name
+        self.power = power
+        self.speed = speed
+        self.terrorradius = terrorradius
+        self.height = height
+
+    def chase(self):
+        print(f"{self.name} is chasing a survivor")
+
+    def patrolling(self):
+        print(f"{self.name} is patrolling the map")
+
+
+trapper = Killerstats("Trapper", "bear traps", "115%", "32 meters", "tall")
+huntress = Killerstats("Huntress", "Hatchets", "110%", "32 meters", "tall")
+print("Trapper:")
+print(trapper.power)
+print(trapper.speed)
+print(trapper.terrorradius)
+print(trapper.height)
+trapper.chase()
+print("Huntress: ")
+print(huntress.power)
+print(huntress.speed)
+print(huntress.terrorradius)
+print(huntress.height)
+huntress.patrolling()
