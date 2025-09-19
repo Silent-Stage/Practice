@@ -3,7 +3,7 @@ import os
 import json
 from bs4 import BeautifulSoup
 
-FILENAME = "DBDscrapelist"
+FILENAME = "DBDscrapelist.json"
 if os.path.exists(FILENAME):
     with open(FILENAME, "r") as f:
         saved = json.load(f)
