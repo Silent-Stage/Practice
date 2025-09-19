@@ -6,13 +6,22 @@ import requests
 from fractions import Fraction
 from bs4 import BeautifulSoup
 
-FILENAME = "Task Project.json"
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FILENAME = os.path.join(BASE_DIR, "Task Project.json")
+
 if os.path.exists(FILENAME):
     with open(FILENAME, "r") as f:
         tasks = json.load(f)
 else:
     tasks = []
-FILENAME2 = "DBDscrapelist.json"
+
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FILENAME2 = os.path.join(BASE_DIR, "DBDscrapelist.json")
+ 
 if os.path.exists(FILENAME2):
     with open(FILENAME2, "r") as f:
         saved = json.load(f)
@@ -254,7 +263,7 @@ def printscrape():
 
 def menu():
     opt = int(
-        input(archlogo + "\nMenu:\n1. Arch Task Manager\n2. Arch Calculator\n3. DBD Stats"))
+        input(archlogo + "\nMenu:\n1. Arch Task Manager\n2. Arch Calculator\n3. DBD Stats\n"))
     if opt == 1:
         taskmanager()
     elif opt == 2:
