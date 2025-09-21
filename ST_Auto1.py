@@ -1,4 +1,4 @@
-import pyautogui, time, subprocess, keyboard
+# import pyautogui, time, subprocess
 # #This script just shows your current mouse position, even when you move it
 # print("Move your mouse around. Press Ctrl+C to stop")
 # try:
@@ -39,26 +39,26 @@ import pyautogui, time, subprocess, keyboard
 #     except KeyboardInterrupt:
 #         print("Done")
 
-def saveposition():
-    saved_positions = []
-    print("Interactive position saver!")
+# def saveposition():
+#     saved_positions = []
+#     print("Interactive position saver!")
     
-    while True:
-        choice = input("Press 's' to save current position, 'q' to quit: ").lower()
+#     while True:
+#         choice = input("Press 's' to save current position, 'q' to quit: ").lower()
         
-        if choice == 's':
-            x, y = pyautogui.position()
-            saved_positions.append((x, y))
-            print(f"Saved position: ({x}, {y})")
+#         if choice == 's':
+#             x, y = pyautogui.position()
+#             saved_positions.append((x, y))
+#             print(f"Saved position: ({x}, {y})")
             
-        elif choice == 'q':
-            break
+#         elif choice == 'q':
+#             break
             
-        else:
-            print("Please press 's' or 'q'")
+#         else:
+#             print("Please press 's' or 'q'")
     
-    print("Saved positions:", saved_positions)
-    return saved_positions
+#     print("Saved positions:", saved_positions)
+#     return saved_positions
 
-# Call the function
-saveposition()
+# # Call the function
+# saveposition()
