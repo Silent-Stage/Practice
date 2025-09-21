@@ -17,11 +17,10 @@ if os.path.exists(FILENAME):
 else:
     tasks = []
 
-import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 FILENAME2 = os.path.join(BASE_DIR, "DBDscrapelist.json")
- 
+
 if os.path.exists(FILENAME2):
     with open(FILENAME2, "r") as f:
         saved = json.load(f)
