@@ -1,4 +1,4 @@
-# import pyautogui, time, subprocess
+import pyautogui, time
 # #This script just shows your current mouse position, even when you move it
 # print("Move your mouse around. Press Ctrl+C to stop")
 # try:
@@ -38,6 +38,7 @@
 #             time.sleep(0.1)
 #     except KeyboardInterrupt:
 #         print("Done")
+# getposition()
 
 # def saveposition():
 #     saved_positions = []
@@ -62,3 +63,78 @@
 
 # # Call the function
 # saveposition()
+
+
+def hovertarget():
+    try:
+        target = pyautogui.locateOnScreen(r"D:\Downloads\ST_DownloadButton.png", confidence=0.8)
+        if target:
+            center = pyautogui.center(target)
+            pyautogui.moveTo(center)
+            time.sleep(0.3)
+            print("found")
+            return True
+        else:
+            print("not found")
+            return False
+    except pyautogui.ImageNotFoundException:
+        print("not found 2")
+        return False
+        
+def openFE():
+    try:
+        target = pyautogui.locateOnScreen(r"D:\Downloads\ST_pngbutton.png", confidence=0.8)
+        if target:
+            center = pyautogui.center(target)
+            pyautogui.click(center)
+            return True
+        else:
+            return False
+    except pyautogui.ImageNotFoundException:
+        return False
+def saveFE():
+    try:
+        time.sleep(1.5)
+        target = pyautogui.locateOnScreen(r"D:\Downloads\ST_FEsave.png", confidence=0.8)
+        if target:
+            center = pyautogui.center(target)
+            pyautogui.click(center)
+            return True
+        else:
+            return False
+    except pyautogui.ImageNotFoundException:
+        return False
+def STdownload():
+    if not hovertarget():
+        return False
+    if not openFE():
+        return False
+    if not saveFE():
+        return False
+    return True
+def ST():
+    """Run STdownload() on all tabs without knowing how many exist"""
+    
+    consecutive_failures = 0
+    max_consecutive_failures = 2
+    target = pyautogui.locateOnScreen(r"D:\Downloads\ST_DownloadButton.png", confidence=0.8)
+    if target:
+            center = pyautogui.center(target)
+            pyautogui.click(center)
+    for tab_num in range(1, 9):
+        pyautogui.hotkey('ctrl', str(tab_num))
+        time.sleep(0.3)
+        try:
+            if STdownload():
+                consecutive_failures = 0
+            else:
+                consecutive_failures += 1
+        except Exception:
+            consecutive_failures += 1
+        if consecutive_failures >= max_consecutive_failures:
+            break
+        time.sleep(0.5)
+ST()
+
+
+
